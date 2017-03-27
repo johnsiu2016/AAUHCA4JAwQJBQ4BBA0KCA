@@ -1,0 +1,40 @@
+{
+  "name": "currency-work",
+  "version": "1.0.0",
+  "description": "A beanstalk worker that scrap and store currency rate",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .jsx,.js .",
+    "test": "mocha || exit 0",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnsiu2016/AAUHCA4JAwQJBQ4BBA0KCA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/johnsiu2016/AAUHCA4JAwQJBQ4BBA0KCA/issues"
+  },
+  "homepage": "https://github.com/johnsiu2016/AAUHCA4JAwQJBQ4BBA0KCA#readme",
+  "author": "John Siu",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "bsw": "^1.4.0",
+    "co": "^4.6.0",
+    "fivebeans": "^1.5.0",
+    "mongoose": "^4.9.0",
+    "x-ray": "^2.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.17.1",
+    "eslint-config-aftership": "^3.3.0",
+    "mocha": "^3.2.0",
+    "sinon": "^2.1.0",
+    "sinon-chai": "^2.9.0"
+  },
+  "eslintConfig": {
+    "extends": "aftership"
+  }
+}

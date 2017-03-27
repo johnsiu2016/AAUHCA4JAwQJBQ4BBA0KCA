@@ -1,8 +1,11 @@
 {
   "name": "currency-work",
   "version": "1.0.0",
-  "description": "A beanstalk worker that scrap and store currency rate",
+  "description": "A beanstalk worker that can scrap and store currency rate",
   "main": "index.js",
+  "engines": {
+    "node": ">= 4.2"
+  },
   "scripts": {
     "lint": "eslint --ext .jsx,.js .",
     "test": "mocha || exit 0",

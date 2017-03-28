@@ -44,6 +44,7 @@ The configuration file can be found on ./config.json.
 
 ## Seed
 The following is an example of the predefined job for the worker
+
 You can find more on ./seed.js
 ```
 {

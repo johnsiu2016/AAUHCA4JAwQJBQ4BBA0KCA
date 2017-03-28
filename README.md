@@ -1,7 +1,5 @@
 # AAUHCA4JAwQJBQ4BBA0KCA
-This is a beanstalk worker that can scrape and store currency rate.
-
-This worker automatically reserves predefined job (see [Seed](#seed)), and scrapes currency rate from [xe.com](http://www.xe.com), and then it stores the rate into MongoDB.
+This is a beanstalk worker that get currency rate from [xe.com](http://www.xe.com), and then stores it into MongoDB.
 
 ## Requirements
 requires [Node.js](https://nodejs.org/) v4+ to run.
@@ -45,7 +43,7 @@ The configuration file can be found on ./config.json.
 ```
 
 ## Seed
-The following is an example of the predefined job for the worker:
+The following is an example of the predefined job for the worker
 You can find more on ./seed.js
 ```
 {
@@ -62,6 +60,23 @@ To run the test suite,
 ```
 npm run test
 ```
+
+## Methodologies
+A job in beanstalk can only be on of four states: "ready", "reserved", "delayed", or
+"buried" (see the [protocol](https://raw.githubusercontent.com/kr/beanstalkd/master/doc/protocol.txt)). Once a job is created, the payload of the job cannot be modified.
+
+If you want to get more info of the job, you can get a list of statistics about the states, but it is not enough as you want to know whether the job actually did the business logic, rather than it has been reserved or buried. Therefore, it is very common to add own tracking parameters each job and modify them after the reserve. e.g. How many times has the job fail.
+
+To do that, you typically have three ways:
+- Store the tracking parameters of all jobs on database, and each worker modifies them after each reserve.
+- Deploy a pub/sub system, publish the info to all workers and each worker maintain all the job states in memory.
+- Directly add the paramters on the job payload, delete and create a new job with modified parameters through producer connection (each consumer now associated with one additional producer connection).
+
+The advantages of the first two is that, you don't break the convention of beanstalk worker. The role of producer and consumer is clear, and the job id is also the same after each reserve. But it is more complex.
+
+The third way is much easier as it is self-contained but you break the convention and need to maintain two connections for each consumer (one of itself and the other is for producer).
+
+This worker applies the third way to accomplish its tasks.
 
 License
 ----

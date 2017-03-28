@@ -1,5 +1,5 @@
 {
-  "name": "currency-work",
+  "name": "currency-worker",
   "version": "1.0.0",
   "description": "A beanstalk worker that can scrap and store currency rate",
   "main": "index.js",

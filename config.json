@@ -2,14 +2,14 @@
   "beanstalkd": {
     "host": "challenge.aftership.net",
     "port": 11300,
-    "tube": "johnsiu2016-test"
+    "tube": "johnsiu2016"
   },
   "mongodb": {
     "host": "mongodb://localhost:27017/testplace"
   },
   "job": {
     "currency": {
-      "success_delay": 5,
+      "success_delay": 60,
       "failure_delay": 3,
       "success_count_limit": 10,
       "failure_count_limit": 3
